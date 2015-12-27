@@ -1,5 +1,5 @@
 This repo is a collection of simple demos of Webpack.
-
+I am lianxu -- 
 These demos are purposely written in a simple and clear style. You will find no difficulty in following them to learn the powerful tool.
 
 ## How to use
