@@ -1,7 +1,28 @@
-var img1 = document.createElement("img");
-img1.src = require("./small.png");
-document.body.appendChild(img1);
+require('./app.scss');
 
-var img2 = document.createElement("img");
-img2.src = require("./big.png");
-document.body.appendChild(img2);
+const React = require('react');
+const ReactDOM = require('react-dom');
+
+var Hello = React.createClass({
+    getInitialState: () => {
+        return{src: require("./small.png")}
+    },
+    doclick: function() {
+        this.setState({src: require("./big.png")})
+    },
+    render: function() {
+        return (
+            <div>
+                <h1 onClick={this.doclick}>
+                    点击更新图片
+                </h1>
+                <img src={this.state.src}/>
+            </div>
+        );
+    }
+});
+
+ReactDOM.render(
+    <Hello></Hello>,
+    document.body
+);
