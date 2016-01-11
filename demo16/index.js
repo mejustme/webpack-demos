@@ -17,7 +17,7 @@ var App = React.createClass({
           </ul>
           Logged in as Jane
         </header>
-        {this.props.children}
+        {this.props.children} /*子组件模块动态在这里添加*/
       </div>
     );
   }
@@ -57,9 +57,9 @@ let history = createBrowserHistory();
 
 render((
   <Router history={history}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Dashboard}/>
-      <Route path="app" component={Dashboard}/>
+    <Route path="/" component={App}> /*this.props.children 就是里面的*/
+      <IndexRoute component={Inbox}/> /*默认那个模块*/
+      <Route path="app" component={Dashboard}/> /*对应与那个组件*/
       <Route path="inbox" component={Inbox}/>
       <Route path="calendar" component={Calendar}/>
       <Route path="*" component={Dashboard}/>

@@ -12,6 +12,13 @@ module.exports = {
     // require("jquery") is external and available
     //  on the global var jQuery
     //  "jquery": "jQuery"
-    'data': 'data'
+    //告诉webpack 这个require要通过全局里拿，不是加载打包的
+    'data': 'data1'
+    /* 1 最终被解析为这样*/
+    /*function(module, exports) {
+
+     module.exports = data1;
+
+     },*/
   }
 };
