@@ -103,7 +103,8 @@
 	        ),
 	        'Logged in as Jane'
 	      ),
-	      this.props.children
+	      this.props.children,
+	      ' /*������ģ�鶯̬����������*/'
 	    );
 	  }
 	});
@@ -137,29 +138,43 @@
 	});
 
 	var Calendar = _react2.default.createClass({
+	  getInitialState: function getInitialState() {
+	    return {
+	      name: "xxxx"
+	    };
+	  },
+	  doClick: function doClick() {
+	    this.setState({ name: "mejustme" });
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { onClick: this.doClick },
 	      _react2.default.createElement(
 	        'p',
 	        null,
-	        'Calendar'
+	        this.state.name
 	      )
 	    );
 	  }
 	});
 
-	var history = (0, _createBrowserHistory2.default)();
-
+	//let history = createBrowserHistory(); ����history.pushState()�ı�URL����ˢ�¡�Ĭ��ͨ��#hash�ı�
+	/*<Router history={history}>*/
+	//http://localhost:63342/webpack-demos/demo16/index.html#/inbox?_k=t4flas
+	/*window.location.hash = newHash, with no place to store location state.
+	But, we want all histories to be able to use location state, so we shim it by creating a unique key for each location and then store that state in session storage.*/
 	(0, _reactDom.render)(_react2.default.createElement(
 	  _reactRouter.Router,
-	  { history: history },
+	  null,
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: App },
-	    _react2.default.createElement(_reactRouter.IndexRoute, { component: Dashboard }),
+	    ' /*this.props.children ����������*/',
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: Inbox }),
+	    ' /*Ĭ���Ǹ�ģ��*/',
 	    _react2.default.createElement(_reactRouter.Route, { path: 'app', component: Dashboard }),
+	    ' /*��Ӧ���Ǹ�����*/',
 	    _react2.default.createElement(_reactRouter.Route, { path: 'inbox', component: Inbox }),
 	    _react2.default.createElement(_reactRouter.Route, { path: 'calendar', component: Calendar }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '*', component: Dashboard })
